@@ -106,101 +106,69 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: itch light atkD sheet-Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 108.57143
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0f1b81ffbb595e49b77579f81c8d538
-      internalID: -572018845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch light atkD sheet-Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 108
-        y: 0
-        width: 108.57143
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c238d34ab3dc3e418e7904951f0ffc0
-      internalID: 468924916
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch light atkD sheet-Sheet_10
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 0
-        width: 108.57143
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 494b44c1d020e1b449f5fca71bdf9df3
-      internalID: 2056328540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: itch light atkD sheet-Sheet_9
-      rect:
-        serializedVersion: 2
-        x: 324
-        y: 0
-        width: 108.57143
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55b848bcfa967034986f0eba4a2266a2
-      internalID: 619541511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: itch light atkD sheet-Sheet_0
       rect:
         serializedVersion: 2
-        x: 432
-        y: 0
-        width: 108.57143
-        height: 80
+        x: 455
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +186,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_1
       rect:
         serializedVersion: 2
-        x: 543
-        y: 0
-        width: 112
-        height: 80
+        x: 569
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +207,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_2
       rect:
         serializedVersion: 2
-        x: 655
-        y: 0
-        width: 115
-        height: 80
+        x: 682
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +228,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_3
       rect:
         serializedVersion: 2
-        x: 774
-        y: 0
-        width: 111
-        height: 80
+        x: 795
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +249,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_4
       rect:
         serializedVersion: 2
-        x: 886
-        y: 0
-        width: 114
-        height: 80
+        x: 909
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +270,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_5
       rect:
         serializedVersion: 2
-        x: 995
-        y: 0
-        width: 119
-        height: 80
+        x: 1019
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +291,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_6
       rect:
         serializedVersion: 2
-        x: 1108
-        y: 0
-        width: 121
-        height: 80
+        x: 1130
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +312,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_7
       rect:
         serializedVersion: 2
-        x: 1217
-        y: 0
-        width: 126
-        height: 80
+        x: 1241
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +333,10 @@ TextureImporter:
       name: itch light atkD sheet-Sheet_8
       rect:
         serializedVersion: 2
-        x: 1328
-        y: 0
-        width: 117
-        height: 80
+        x: 1353
+        y: 17
+        width: 40
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,17 +10,18 @@ public class PlayerControl : MonoBehaviour
     public KeyCode jump = KeyCode.Space;
     public KeyCode atirar = KeyCode.E;
     public KeyCode dash = KeyCode.Q;
+    public GameObject Arrow;
     private float speed = 5f;
     private Rigidbody2D rb2d;
     private Vector2 moveDirection;
     private Animator anime;
     private SpriteRenderer sprRend;
-    int count =0;
+    bool isRight = true;
     private bool jumpping = false;
-    private bool shooting = false;
     private bool dashing = false;
-    private GameObject plataforma;
-    private GameObject plataforma2;
+    private bool chargingShoot = false;
+    private bool keepingShot = false;
+    private bool shooting = false;
     
     public void PlayerAnimation(string animationName){
         anime.Play(animationName);
@@ -28,9 +30,6 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        
-        plataforma = GameObject.FindGameObjectWithTag("Plataforma"); 
-        plataforma2 = GameObject.FindGameObjectWithTag("Plataforma2"); 
         anime = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         sprRend = GetComponent<SpriteRenderer>();
@@ -42,18 +41,9 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D (Collider2D hitInfo) {
-        
-        if(hitInfo.gameObject.CompareTag("Plataformabaixo")) {
-            plataforma.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            plataforma2.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-        }
-        else if(hitInfo.gameObject.CompareTag("Plataformacima")) {
-            plataforma.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-            plataforma2.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-        }
+    void Shoot() {
+        Instantiate(Arrow, transform.position, Quaternion.identity);
     }
-
 
     // Update is called once per frame
     void Update()
@@ -63,19 +53,32 @@ public class PlayerControl : MonoBehaviour
             jumpping = true;
             rb2d.AddForce(new Vector2(0, 8), ForceMode2D.Impulse);
         } else if (Input.GetKey(moveRight)){
-            count =1;
+            isRight = true;
         } else if (Input.GetKey(moveLeft)){       
-            count =0;         
+            isRight = false;         
         }
-        else if (Input.GetKeyDown(atirar) && !shooting)
-        {
-            shooting =true;
-            StartCoroutine(Wait("atirarE"));
-            
+        else if (Input.GetKeyDown(atirar))
+        { 
+            chargingShoot = true;
+            PlayerAnimation("CarregandoArco"); 
+            StartCoroutine(Wait("CarregandoArco"));
+        } else if (Input.GetKey(atirar)) {
+            if(!chargingShoot) {
+                keepingShot = true;
+                PlayerAnimation("SegurandoTiro");
+            }
+        }
+        else if (Input.GetKeyUp(atirar)) {
+            chargingShoot = false;
+            keepingShot = false;
+            shooting = true;
+            PlayerAnimation("Atirar");
+            Shoot();
+            StartCoroutine(Wait("Atirar"));
         }
         else if (Input.GetKeyDown(dash) && !dashing)
         {
-            dashing =true;
+            dashing = true;
             StartCoroutine(Wait("DashE"));
             
         }
@@ -91,11 +94,16 @@ public class PlayerControl : MonoBehaviour
                     break;
                 }
             }
-            yield return new WaitForSeconds(clips[index].length-0.7f);
-            if(nome == "atirarE"){
-                shooting= false;
+            yield return new WaitForSeconds(clips[index].length);
+            if(nome.Equals("Atirar")){
+                shooting = false;
+                chargingShoot= false;
+                keepingShot = false;
+            }else if(nome.Equals("CarregandoArco")){
+                chargingShoot= false;
+                keepingShot = true;
             }
-            else if(nome == "DashE"){
+            else if(nome.Equals("DashE")){
                 dashing= false;
             }
                     
@@ -105,44 +113,21 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     { 
+        sprRend.flipX = !isRight;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         moveDirection = new Vector2(horizontal * speed, rb2d.velocity.y);
         rb2d.velocity = moveDirection;
         if(Input.GetKey(KeyCode.Space) && jumpping){
-            if(count ==1){
-                PlayerAnimation("Pular");
-            }
-            else if(count ==0){
-                PlayerAnimation("PularE");
-            }
-            
+            PlayerAnimation("Pular");
         }else if(Input.GetKey(moveRight) && !jumpping){
             PlayerAnimation("CorrerD");
-            
         }
         else if(Input.GetKey(moveLeft) && !jumpping){
-            PlayerAnimation("CorrerE");
+            PlayerAnimation("CorrerD");
         }
-        else if(Input.GetKey(atirar) && shooting && !jumpping && !dashing){
-            if(count ==1){
-                PlayerAnimation("atirarD");
-            }
-            else if(count ==0){
-                PlayerAnimation("atirarE");
-            }           
-        }
-        else if(Input.GetKey(dash) && dashing && !jumpping && !shooting){
-            if(count ==1){
-                PlayerAnimation("DashD");
-            }
-            else if(count ==0){
-                PlayerAnimation("DashE");
-            }            
-        }
-        else if(!jumpping && !shooting && !dashing){
+        else if(!jumpping && !shooting && !dashing && !keepingShot && !chargingShoot){
             PlayerAnimation("Parado");
         }
-        
     }
 }
