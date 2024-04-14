@@ -1706,7 +1706,7 @@ MonoBehaviour:
   jump: 32
   atirar: 101
   dash: 113
-  Arrow: {fileID: 0}
+  Arrow: {fileID: 1107649864590914126, guid: cc3371ec5bccac24bb9b9f67fb33b00c, type: 3}
 --- !u!60 &418248074
 PolygonCollider2D:
   m_ObjectHideFlags: 0
