@@ -9,6 +9,12 @@ TagManager:
   - Plataformabaixo
   - Plataformacima
   - Plataforma2
+  - Boss
+  - Inimigo
+  - Parede
+  - vida
+  - pareded
+  - paredee
   layers:
   - Default
   - TransparentFX

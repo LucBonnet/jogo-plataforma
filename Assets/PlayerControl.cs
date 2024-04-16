@@ -12,19 +12,24 @@ public class PlayerControl : MonoBehaviour
     public KeyCode dash = KeyCode.Q;
     public GameObject Arrow;
     private float speed = 5f;
+    public static float health = 100f;
     private Rigidbody2D rb2d;
     private Vector2 moveDirection;
     private Animator anime;
     private SpriteRenderer sprRend;
-    bool isRight = true;
+    public static bool isRight = true;
     private bool jumpping = false;
     private bool dashing = false;
     private bool chargingShoot = false;
     private bool keepingShot = false;
     private bool shooting = false;
+ 
     
     public void PlayerAnimation(string animationName){
         anime.Play(animationName);
+    }
+    public static void SubVida(){
+        health--;
     }
 
     // Start is called before the first frame update
@@ -36,18 +41,25 @@ public class PlayerControl : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.CompareTag("Chao") || col.gameObject.CompareTag("Plataforma") || col.gameObject.CompareTag("Plataforma2")) {
+        if(col.gameObject.CompareTag("Chao") || col.gameObject.CompareTag("Plataforma")) {
             jumpping = false;
         }
     }
+    
+        
+    
 
     void Shoot() {
         Instantiate(Arrow, transform.position, Quaternion.identity);
+        chargingShoot = false;
+        keepingShot = false;
+        shooting = false;
     }
 
     // Update is called once per frame
     void Update()
-    {   
+    {  
+        Debug.Log(health); 
         if (Input.GetKeyDown(KeyCode.Space) && !jumpping)
         {
             jumpping = true;
@@ -113,21 +125,36 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     { 
+
         sprRend.flipX = !isRight;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         moveDirection = new Vector2(horizontal * speed, rb2d.velocity.y);
         rb2d.velocity = moveDirection;
         if(Input.GetKey(KeyCode.Space) && jumpping){
+    
             PlayerAnimation("Pular");
         }else if(Input.GetKey(moveRight) && !jumpping){
+            Parallax.movingSpeed  =2f;
+            Parallax1.movingSpeed =4f;
+            Parallax2.movingSpeed =6f;
+           
             PlayerAnimation("CorrerD");
         }
+        
         else if(Input.GetKey(moveLeft) && !jumpping){
+            Parallax.movingSpeed  =-2f;
+            Parallax1.movingSpeed =-4f;
+            Parallax2.movingSpeed =-6f;
+          
             PlayerAnimation("CorrerD");
         }
         else if(!jumpping && !shooting && !dashing && !keepingShot && !chargingShoot){
+            Parallax.movingSpeed  =0f;
+            Parallax1.movingSpeed =0f;
+            Parallax2.movingSpeed =0f;
             PlayerAnimation("Parado");
         }
+        
     }
 }
